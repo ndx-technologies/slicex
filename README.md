@@ -1,2 +1,1 @@
-# slicex
 Go slices extra
