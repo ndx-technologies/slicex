@@ -1,0 +1,2 @@
+# slicex
+Go slices extra
