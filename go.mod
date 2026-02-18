@@ -1,3 +1,3 @@
 module github.com/ndx-technologies/slicex
 
-go 1.25
+go 1.26
