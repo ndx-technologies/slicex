@@ -15,26 +15,35 @@ func (s *V) UnmarshalText(b []byte) error {
 	return err
 }
 
-func ExampleSliceParser() {
+func ExampleParser() {
 	var vs []V
-	parse := slicex.SliceParser(&vs)
-	parse("1,2,3")
+	f := slicex.Parser(&vs)
+	f("1,2,3")
 	fmt.Print(vs)
 	// Output: [1 2 3]
 }
 
-func ExampleSliceParser_empty() {
+func ExampleParser_empty() {
 	var vs []V
-	parse := slicex.SliceParser(&vs)
-	parse("")
-	fmt.Print(vs)
-	// Output: []
+	f := slicex.Parser(&vs)
+	err := f("")
+	fmt.Print(vs, err)
+	// Output: [] <nil>
 }
 
-func ExampleSliceParser_single() {
+func ExampleParser_single() {
 	var vs []V
-	parse := slicex.SliceParser(&vs)
-	parse("1")
+	f := slicex.Parser(&vs)
+	f("1")
 	fmt.Print(vs)
 	// Output: [1]
+}
+
+func ExampleParser_error() {
+	var vs []V
+	f := slicex.Parser(&vs)
+	err := f("a")
+	fmt.Print(vs, err != nil)
+	// Output: [] true
+
 }
